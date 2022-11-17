@@ -41,3 +41,17 @@ else:
    print("Fibonacci sequence:")
    for i in range(nterms):
        print(recur_fibo(i))
+
+
+#analysis : 
+In case of recursion the solution take exponential time, 
+that can be explained by the fact that the size of the tree exponentially 
+grows when n increases. So for every additional element in the Fibonacci 
+sequence we get an increase in function calls. Big O in this case is equal 
+to O(2^n). Exponential Time complexity denotes an algorithm whose growth doubles 
+with each addition to the input data set.
+
+An algorithm in our iterative solution takes linear time to complete the task.
+Basically we iterate through the loop n-2 times, so Big O (notation used to
+describe our worst case scenario) would be simply equal to O(n) in this case. 
+The space complexity is O(n)
