@@ -49,3 +49,5 @@ for row in board:
 		- 1) row is fixed - we traverse along col 
 		- 2) row -- , col --  (upper diagonal) 
 		- 3) row++, col-- (lower diagonal) 
+time complexity : O(N!)
+space : O(N^2)
