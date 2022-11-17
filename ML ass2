@@ -1,0 +1,67 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+%matplotlib inline
+import warnings
+warnings.filterwarnings('ignore')
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+from sklearn import metrics
+df=pd.read_csv('emails.csv')
+df.head()
+
+df.columns
+df.isnull().sum()
+df.dropna(inplace = True)
+
+
+df.drop(['Email No.'],axis=1,inplace=True)
+X = df.drop(['Prediction'],axis = 1)
+y = df['Prediction']
+
+
+from sklearn.preprocessing import scale
+X = scale(X)
+# split into train and test
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 42)
+
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=7)
+ 
+knn.fit(X_train, y_train)
+y_pred = knn.predict(X_test)
+
+
+print("Prediction",y_pred)
+
+print("KNN accuracy = ",metrics.accuracy_score(y_test,y_pred))
+print("Confusion matrix",metrics.confusion_matrix(y_test,y_pred))
+
+# cost C = 1
+model = SVC(C = 1)
+
+# fit
+model.fit(X_train, y_train)
+
+# predict
+y_pred = model.predict(X_test)
+
+metrics.confusion_matrix(y_true=y_test, y_pred=y_pred)
+print("SVM accuracy = ",metrics.accuracy_score(y_test,y_pred))
+
+#theory 
+- KNN classifier : 
+	- find k (assume k=5) 
+	- now from given point , i need to find 5 data points which are closest 
+	- means find most nearby k datapoints - whichever datapoint category that datapoint belong my new data will go to that category 
+	- plot confusion matrix : 
+		- tells for which classes got the prediction right and for which classes wrong prediction
+		- anything on diagonal are correct predicition 
+		- Truth - y axis and predicted value - x axis 
+    - SVM classifier 
+	- draw classification boundary to separate 2 groups  - many boundaries draw 
+	- to decide which is best boundary ? take nearby data points and measure the distance from that line 
+		- line with major distance from datapoint is best 
+		- and this nearby data point are support vectors (hyperplane draw )
+    
