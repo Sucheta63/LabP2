@@ -1,7 +1,4 @@
-# A Huffman Tree Node
 import heapq
-
-
 class node:
     def __init__(self, freq, symbol, left=None, right=None):
         # frequency of symbol
@@ -37,17 +34,27 @@ def printNodes(node, val=''):
     if (node.right):
         printNodes(node.right, newVal)
 
-    # if node is edge node then
-    # display its huffman code
+        # if node is edge node then
+        # display its huffman code
     if (not node.left and not node.right):
         print(f"{node.symbol} -> {newVal}")
 
 
 # characters for huffman tree
-chars = ['a', 'b', 'c', 'd', 'e', 'f']
+# chars = ['a', 'b', 'c', 'd', 'e', 'f']
+chars = []
+n = int(input("Enter number of characters:"))
+for i in range(0, n):
+    ele = input("Enter character:")
+
+    chars.append(ele)
 
 # frequency of characters
-freq = [5, 9, 12, 13, 16, 45]
+# freq = [ 5, 9, 12, 13, 16, 45]
+freq = []
+for i in range(0, n):
+    fre = int(input("Enter frequency:"))
+    freq.append(fre)
 
 # list containing unused nodes
 nodes = []
@@ -75,3 +82,19 @@ while len(nodes) > 1:
 
 # Huffman Tree is ready!
 printNodes(nodes[0])
+
+#analysis 
+time complexity is nlogn 
+- greedy technique 
+	- used for data compression 
+	- reduce size of data 
+	- cost of normal message = 20 characters , using ASCII we do =160 bits 
+- huffman encoding - vaariable coding
+	- give small size code for more frequency characters
+	- follow optimal merge pattern 
+	- all alphabet arrange in increasing order of frequency 
+		- merge 2 smallest and make one node 
+		- and so on 
+		- we got optimal merge pattern tree 
+	- using this tree we get codes - left side mark 0 and right side 1 
+		- and for each alphabet follow path from root 
