@@ -32,3 +32,20 @@ nqn(board,0)
 
 for row in board:
     print(row)
+    
+    #analysis 
+    - N- queen problem :
+	- given n*n chessboard , place n queens on board ,such that no two queens attack each other 
+	- for a 4*4 board the following are the positions of queens where no 2 queens attack each other 
+	- 0010
+	- 1000
+	- 0001
+	- 0100
+- 0 shows no queen , 1 shows queen 
+	- no queen along the diagonal , in the row , in the column 
+- approach : 
+	- i want to check if i can place queen at row 4 and col 4 
+		- need to check if there is any queen in diagonal, row 4 , col 4
+		- 1) row is fixed - we traverse along col 
+		- 2) row -- , col --  (upper diagonal) 
+		- 3) row++, col-- (lower diagonal) 
