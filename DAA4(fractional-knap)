@@ -28,3 +28,7 @@ if __name__ == '__main__':
     print('The maximum value of items that can be carried:', max_value)
     print('The fractions in which the items should be taken:', fractions)
 
+#analysis 
+- Time Complexity: O(N * log N)
+- Auxiliary Space: O(N)
+- In Fractional Knapsack, we can break items for maximizing the total value of the knapsack
