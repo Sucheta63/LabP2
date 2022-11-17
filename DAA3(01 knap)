@@ -21,3 +21,12 @@ if '__main__' == __name__:
     W = int(input('Enter the maximum capacity of the knapsack: ')) # 50
     n = len(val)
     print(knapSack(W, wt, val, n))
+#analysis 
+- TC =O(N*W( 
+	- n = no. of items 
+	- w = capacity of knapsack 
+recursive DP approach is used 
+10 20 30 //weights
+60 100 120 //value
+w = 50 
+n=3
